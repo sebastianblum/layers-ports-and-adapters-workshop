@@ -1,26 +1,22 @@
 <?php
-declare(strict_types = 1);
 
-namespace Tests\MeetupOrganizing\Unit\Domain\Model\Description;
+namespace Tests\MeetupOrganizing\Integration\Infrastructure\Persistence\InMemory;
 
 use Assert\Assertion;
 use MeetupOrganizing\Domain\Model\MeetupId;
-use MeetupOrganizing\Infrastructure\Persistence\Filesystem\MeetupRepositoryFilesystem;
+use MeetupOrganizing\Domain\Repository\MeetupRepositoryInterface;
+use MeetupOrganizing\Infrastructure\Persistence\InMemory\MeetupRepositoryInMemory;
+use PHPUnit\Framework\TestCase;
 use Tests\MeetupOrganizing\Unit\Domain\Model\Description\Util\MeetupFactory;
 
-final class MeetupRepositoryTest extends \PHPUnit_Framework_TestCase
+class MeetupRepositoryInMemoryTest extends TestCase
 {
-    /**
-     * @var MeetupRepositoryFilesystem
-     */
+    /** @var MeetupRepositoryInterface */
     private $repository;
-
-    private $filePath;
 
     protected function setUp()
     {
-        $this->filePath = tempnam(sys_get_temp_dir(), 'meetups');
-        $this->repository = new MeetupRepositoryFilesystem($this->filePath);
+        $this->repository = new MeetupRepositoryInMemory();
     }
 
     /**
@@ -101,10 +97,5 @@ final class MeetupRepositoryTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals([], $this->repository->upcomingMeetups(new \DateTimeImmutable()));
         $this->assertEquals([], $this->repository->pastMeetups(new \DateTimeImmutable()));
-    }
-
-    protected function tearDown()
-    {
-        unlink($this->filePath);
     }
 }
