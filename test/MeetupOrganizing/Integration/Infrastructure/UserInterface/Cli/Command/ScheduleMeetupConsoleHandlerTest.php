@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Tests\MeetupOrganizing\Command;
+namespace Tests\MeetupOrganizing\Integration\Infrastructure\UserInterface\Cli\Command;
 
 use MeetupOrganizing\Infrastructure\UserInterface\Cli\Command\MeetupApplicationConfig;
 use Webmozart\Console\Args\StringArgs;
@@ -15,7 +15,7 @@ final class ScheduleMeetupConsoleHandlerTest extends \PHPUnit_Framework_TestCase
      */
     public function it_schedules_a_meetup(): void
     {
-        $container = require __DIR__ . '/../../../app/container.php';
+        $container = require __DIR__ . '/../../../../../../../app/container.php';
 
         $config = new MeetupApplicationConfig($container);
         $config->setTerminateAfterRun(false);

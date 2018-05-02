@@ -1,12 +1,12 @@
 <?php
 declare(strict_types = 1);
 
-namespace Tests\MeetupOrganizing\Entity;
+namespace Tests\MeetupOrganizing\Unit\Domain\Model\Description;
 
 use Assert\Assertion;
 use MeetupOrganizing\Domain\Model\MeetupId;
 use MeetupOrganizing\Infrastructure\Persistence\Filesystem\MeetupRepositoryFilesystem;
-use Tests\MeetupOrganizing\Entity\Util\MeetupFactory;
+use Tests\MeetupOrganizing\Unit\Domain\Model\Description\Util\MeetupFactory;
 
 final class MeetupRepositoryTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\MeetupOrganizing\Application;
+namespace Tests\MeetupOrganizing\Unit\Application;
 
 use MeetupOrganizing\Application\ScheduleMeetup;
 use PHPUnit\Framework\TestCase;

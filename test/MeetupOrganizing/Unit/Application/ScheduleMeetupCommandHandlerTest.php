@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\MeetupOrganizing\Application;
+namespace Tests\MeetupOrganizing\Unit\Application;
 
 use MeetupOrganizing\Application\ScheduleMeetup;
 use MeetupOrganizing\Application\ScheduleMeetupCommandHandler;
@@ -14,6 +14,7 @@ class ScheduleMeetupCommandHandlerTest extends TestCase
         $repository = $this->createMock(MeetupRepositoryInterface::class);
 
         $scheduleMeetup = new ScheduleMeetupCommandHandler($repository);
+        $this->assertAttributeSame($repository, 'repository', $scheduleMeetup);
     }
 
     public function testScheduleMeetup()

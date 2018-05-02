@@ -53,7 +53,7 @@ class ScheduleMeetup
         return $this->scheduledFor;
     }
 
-    public function getId(): ?string
+    public function getId(): string
     {
         return $this->id;
     }
