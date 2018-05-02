@@ -62,7 +62,7 @@ final class Meetup
 
     /**
      * @param int $id
-     * @internal Only to be used by MeetupRepository
+     * @internal Only to be used by MeetupRepositoryFilesystem
      */
     public function setId(int $id): void
     {

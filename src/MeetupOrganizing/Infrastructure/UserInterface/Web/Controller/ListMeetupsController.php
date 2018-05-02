@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace MeetupOrganizing\Infrastructure\UserInterface\Web\Controller;
 
-use MeetupOrganizing\Infrastructure\Persistence\Repository\MeetupRepository;
+use MeetupOrganizing\Infrastructure\Persistence\Filesystem\MeetupRepositoryFilesystem;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Zend\Expressive\Template\TemplateRendererInterface;
@@ -12,7 +12,7 @@ use Zend\Stratigility\MiddlewareInterface;
 final class ListMeetupsController implements MiddlewareInterface
 {
     /**
-     * @var MeetupRepository
+     * @var MeetupRepositoryFilesystem
      */
     private $meetupRepository;
 
@@ -21,7 +21,7 @@ final class ListMeetupsController implements MiddlewareInterface
      */
     private $renderer;
 
-    public function __construct(MeetupRepository $meetupRepository, TemplateRendererInterface $renderer)
+    public function __construct(MeetupRepositoryFilesystem $meetupRepository, TemplateRendererInterface $renderer)
     {
         $this->meetupRepository = $meetupRepository;
         $this->renderer = $renderer;

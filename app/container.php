@@ -1,7 +1,7 @@
 <?php
 
 use Interop\Container\ContainerInterface;
-use MeetupOrganizing\Infrastructure\Persistence\Repository\MeetupRepository;
+use MeetupOrganizing\Infrastructure\Persistence\Filesystem\MeetupRepositoryFilesystem;
 use MeetupOrganizing\Infrastructure\UserInterface\Cli\Command\ScheduleMeetupConsoleHandler;
 use MeetupOrganizing\Infrastructure\UserInterface\Web\Controller\ListMeetupsController;
 use MeetupOrganizing\Infrastructure\UserInterface\Web\Controller\MeetupDetailsController;
@@ -65,8 +65,11 @@ $container['config'] = [
  */
 $container[\MeetupOrganizing\Application\ScheduleMeetupCommandHandler::class] = function (ContainerInterface $container) {
     return new \MeetupOrganizing\Application\ScheduleMeetupCommandHandler(
-        $container->get(MeetupRepository::class)
+        $container->get(\MeetupOrganizing\Domain\Repository\MeetupRepositoryInterface::class)
     );
+};
+$container[\MeetupOrganizing\Domain\Repository\MeetupRepositoryInterface::class] = function (ContainerInterface $container) {
+    return $container->get(MeetupRepositoryFilesystem::class);
 };
 
 
@@ -99,8 +102,8 @@ $container[UrlHelper::class] = function (ContainerInterface $container) {
 /*
  * Persistence
  */
-$container[MeetupRepository::class] = function () {
-    return new MeetupRepository(__DIR__ . '/../var/meetups.txt');
+$container[MeetupRepositoryFilesystem::class] = function () {
+    return new MeetupRepositoryFilesystem(__DIR__ . '/../var/meetups.txt');
 };
 
 /*
@@ -115,13 +118,13 @@ $container[ScheduleMeetupController::class] = function (ContainerInterface $cont
 };
 $container[ListMeetupsController::class] = function (ContainerInterface $container) {
     return new ListMeetupsController(
-        $container->get(MeetupRepository::class),
+        $container->get(MeetupRepositoryFilesystem::class),
         $container->get(TemplateRendererInterface::class)
     );
 };
 $container[MeetupDetailsController::class] = function (ContainerInterface $container) {
     return new MeetupDetailsController(
-        $container->get(MeetupRepository::class),
+        $container->get(MeetupRepositoryFilesystem::class),
         $container->get(TemplateRendererInterface::class)
     );
 };
