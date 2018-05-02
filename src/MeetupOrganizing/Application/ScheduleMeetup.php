@@ -25,11 +25,17 @@ class ScheduleMeetup
      */
     private $scheduledFor;
 
-    public function __construct(string $name, string $description, string $scheduledFor)
+    /**
+     * @var string|null
+     */
+    private $id;
+
+    public function __construct(string $name, string $description, string $scheduledFor, string $id = null)
     {
         $this->name = $name;
         $this->description = $description;
         $this->scheduledFor = $scheduledFor;
+        $this->id = $id;
     }
 
     public function getDescription(): string
@@ -45,5 +51,10 @@ class ScheduleMeetup
     public function getScheduledFor(): string
     {
         return $this->scheduledFor;
+    }
+
+    public function getId(): ?string
+    {
+        return $this->id;
     }
 }

@@ -5,6 +5,7 @@ namespace Tests\MeetupOrganizing\Entity\Util;
 
 use MeetupOrganizing\Domain\Model\Description;
 use MeetupOrganizing\Domain\Model\Meetup;
+use MeetupOrganizing\Domain\Model\MeetupId;
 use MeetupOrganizing\Domain\Model\Name;
 use MeetupOrganizing\Domain\Model\ScheduledDate;
 
@@ -15,7 +16,8 @@ class MeetupFactory
         return Meetup::schedule(
             Name::fromString('Name'),
             Description::fromString('Description'),
-            ScheduledDate::fromPhpDateString('-5 days')
+            ScheduledDate::fromPhpDateString('-5 days'),
+            MeetupId::fromString('1e8349fb-06d0-4625-b44f-a7979786c6f5')
         );
     }
 
@@ -24,7 +26,8 @@ class MeetupFactory
         return Meetup::schedule(
             Name::fromString('Name'),
             Description::fromString('Description'),
-            ScheduledDate::fromPhpDateString('+5 days')
+            ScheduledDate::fromPhpDateString('+5 days'),
+            MeetupId::fromString('1e8349fb-06d0-4625-b44f-a7979786c6f4')
         );
     }
 

@@ -4,12 +4,13 @@
 namespace MeetupOrganizing\Domain\Repository;
 
 use MeetupOrganizing\Domain\Model\Meetup;
+use MeetupOrganizing\Domain\Model\MeetupId;
 
 interface MeetupRepositoryInterface
 {
     public function add(Meetup $meetup): void;
 
-    public function byId(int $id): Meetup;
+    public function byId(MeetupId $meetupId): Meetup;
 
     /**
      * @param \DateTimeImmutable $now

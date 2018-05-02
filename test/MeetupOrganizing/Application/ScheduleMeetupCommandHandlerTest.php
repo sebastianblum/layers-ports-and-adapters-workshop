@@ -24,7 +24,7 @@ class ScheduleMeetupCommandHandlerTest extends TestCase
             ->method('add');
 
         $scheduleMeetup = new ScheduleMeetupCommandHandler($repository);
-        $scheduleMeetupCommand = new ScheduleMeetup('my-name', 'my-description', 'tomorrow');
+        $scheduleMeetupCommand = new ScheduleMeetup('my-name', 'my-description', 'tomorrow', '1e8349fb-06d0-4625-b44f-a7979786c6f6');
 
         $scheduleMeetup->handle($scheduleMeetupCommand);
     }
