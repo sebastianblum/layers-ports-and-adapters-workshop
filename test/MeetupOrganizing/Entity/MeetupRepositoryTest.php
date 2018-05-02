@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Tests\MeetupOrganizing\Entity;
 
-use MeetupOrganizing\Infrastructure\Repository\MeetupRepository;
+use MeetupOrganizing\Infrastructure\Persistence\Repository\MeetupRepository;
 use Tests\MeetupOrganizing\Entity\Util\MeetupFactory;
 
 final class MeetupRepositoryTest extends \PHPUnit_Framework_TestCase

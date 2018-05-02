@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace MeetupOrganizing\Infrastructure\Repository;
+namespace MeetupOrganizing\Infrastructure\Persistence\Repository;
 
 use MeetupOrganizing\Domain\Model\Meetup;
 use NaiveSerializer\Serializer;
 
-final class MeetupRepository
+final class MeetupRepository implements \MeetupOrganizing\Domain\Repository\MeetupRepositoryInterface
 {
     /**
      * @var string

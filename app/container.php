@@ -1,12 +1,12 @@
 <?php
 
 use Interop\Container\ContainerInterface;
-use MeetupOrganizing\Infrastructure\Controller\ListMeetupsController;
-use MeetupOrganizing\Infrastructure\Controller\MeetupDetailsController;
-use MeetupOrganizing\Infrastructure\Controller\ScheduleMeetupController;
-use MeetupOrganizing\Infrastructure\Command\ScheduleMeetupConsoleHandler;
-use MeetupOrganizing\Infrastructure\Repository\MeetupRepository;
-use MeetupOrganizing\Resources\Views\TwigTemplates;
+use MeetupOrganizing\Infrastructure\Persistence\Repository\MeetupRepository;
+use MeetupOrganizing\Infrastructure\UserInterface\Cli\Command\ScheduleMeetupConsoleHandler;
+use MeetupOrganizing\Infrastructure\UserInterface\Web\Controller\ListMeetupsController;
+use MeetupOrganizing\Infrastructure\UserInterface\Web\Controller\MeetupDetailsController;
+use MeetupOrganizing\Infrastructure\UserInterface\Web\Controller\ScheduleMeetupController;
+use MeetupOrganizing\Infrastructure\UserInterface\Web\Resources\Views\TwigTemplates;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Debug\Debug;
@@ -60,6 +60,16 @@ $container['config'] = [
     ]
 ];
 
+/**
+ * Application
+ */
+$container[\MeetupOrganizing\Application\ScheduleMeetupCommandHandler::class] = function (ContainerInterface $container) {
+    return new \MeetupOrganizing\Application\ScheduleMeetupCommandHandler(
+        $container->get(MeetupRepository::class)
+    );
+};
+
+
 /*
  * Zend Expressive Application
  */
@@ -100,7 +110,7 @@ $container[ScheduleMeetupController::class] = function (ContainerInterface $cont
     return new ScheduleMeetupController(
         $container->get(TemplateRendererInterface::class),
         $container->get(RouterInterface::class),
-        $container->get(MeetupRepository::class)
+        $container->get(\MeetupOrganizing\Application\ScheduleMeetupCommandHandler::class)
     );
 };
 $container[ListMeetupsController::class] = function (ContainerInterface $container) {
@@ -121,7 +131,7 @@ $container[MeetupDetailsController::class] = function (ContainerInterface $conta
  */
 $container[ScheduleMeetupConsoleHandler::class] = function (ContainerInterface $container) {
     return new ScheduleMeetupConsoleHandler(
-        $container->get(MeetupRepository::class)
+        $container->get(\MeetupOrganizing\Application\ScheduleMeetupCommandHandler::class)
     );
 };
 

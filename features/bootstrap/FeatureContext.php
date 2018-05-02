@@ -2,7 +2,7 @@
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
-use MeetupOrganizing\Infrastructure\Repository\MeetupRepository;
+use MeetupOrganizing\Infrastructure\Persistence\Repository\MeetupRepository;
 
 /**
  * Defines application features from the specific context.
