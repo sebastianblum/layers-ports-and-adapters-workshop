@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Tests\MeetupOrganizing\Entity;
 
-use MeetupOrganizing\Entity\MeetupId;
+use MeetupOrganizing\Domain\Model\MeetupId;
 
 final class MeetupIdTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,11 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace MeetupOrganizing\Controller;
+namespace MeetupOrganizing\Infrastructure\Controller;
 
-use MeetupOrganizing\Entity\MeetupRepository;
+use MeetupOrganizing\Infrastructure\Repository\MeetupRepository;
 use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Zend\Expressive\Template\TemplateRendererInterface;
 use Zend\Stratigility\MiddlewareInterface;
@@ -28,7 +27,7 @@ final class ListMeetupsController implements MiddlewareInterface
         $this->renderer = $renderer;
     }
 
-    public function __invoke(Request $request, Response $response, callable $out = null): ResponseInterface
+    public function __invoke(Request $request, Response $response, callable $out = null): Response
     {
         $now = new \DateTimeImmutable();
         $upcomingMeetups = $this->meetupRepository->upcomingMeetups($now);

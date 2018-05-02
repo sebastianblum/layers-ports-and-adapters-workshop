@@ -1,11 +1,11 @@
 <?php
 
 use Interop\Container\ContainerInterface;
-use MeetupOrganizing\Command\ScheduleMeetupConsoleHandler;
-use MeetupOrganizing\Controller\MeetupDetailsController;
-use MeetupOrganizing\Entity\MeetupRepository;
-use MeetupOrganizing\Controller\ListMeetupsController;
-use MeetupOrganizing\Controller\ScheduleMeetupController;
+use MeetupOrganizing\Infrastructure\Controller\ListMeetupsController;
+use MeetupOrganizing\Infrastructure\Controller\MeetupDetailsController;
+use MeetupOrganizing\Infrastructure\Controller\ScheduleMeetupController;
+use MeetupOrganizing\Infrastructure\Command\ScheduleMeetupConsoleHandler;
+use MeetupOrganizing\Infrastructure\Repository\MeetupRepository;
 use MeetupOrganizing\Resources\Views\TwigTemplates;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;

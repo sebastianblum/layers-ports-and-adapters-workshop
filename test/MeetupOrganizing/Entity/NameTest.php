@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Tests\MeetupOrganizing\Entity;
 
-use MeetupOrganizing\Entity\Name;
+use MeetupOrganizing\Domain\Model\Name;
 
 final class NameTest extends \PHPUnit_Framework_TestCase
 {

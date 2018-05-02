@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Tests\MeetupOrganizing\Entity;
 
-use MeetupOrganizing\Entity\ScheduledDate;
+use MeetupOrganizing\Domain\Model\ScheduledDate;
 
 final class ScheduledDateTest extends \PHPUnit_Framework_TestCase
 {
